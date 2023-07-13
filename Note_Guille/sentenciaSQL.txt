@@ -1,0 +1,6 @@
+select sd.stock_code,p.product_desc,sd.quantity_amt,unite_price_amt,DATE_FORMAT(invoice_date, '%Y-%m-%d') invoice_date,
+/*DATE_FORMAT(invoice_date,'%H:%i:%s') invoice_time ,*/customer_desc,customer_segment_id,c.iso_code,cc.country
+from sales_details sd
+left join products p on sd.stock_code=p.sku
+left join customers c on c.customer_id=sd.customer_id
+left join country_codes cc on cc.iso_code=c.iso_code;
